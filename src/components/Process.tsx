@@ -3,7 +3,7 @@ import React from 'react';
 import Section from './Section';
 import { 
   ClipboardList, 
-  Dataset, 
+  Database, 
   CheckCircle, 
   BarChart4 
 } from 'lucide-react';
@@ -22,7 +22,7 @@ const Process: React.FC = () => {
       id: 2,
       title: "Data Preparation & Annotation",
       description: "Our team of experts prepares and annotates your data with precision and attention to detail.",
-      icon: <Dataset size={28} className="text-white" />,
+      icon: <Database size={28} className="text-white" />,
       delay: 200
     },
     {

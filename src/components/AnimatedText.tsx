@@ -3,11 +3,13 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface AnimatedTextProps {
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'a';
   children: React.ReactNode;
   className?: string;
   delay?: number;
   animation?: 'fade-in' | 'fade-in-right' | 'fade-in-left' | 'scale-in' | 'blur-in';
+  href?: string;
+  onClick?: () => void;
 }
 
 const AnimatedText: React.FC<AnimatedTextProps> = ({
@@ -15,7 +17,10 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   children,
   className,
   delay = 0,
-  animation = 'fade-in'
+  animation = 'fade-in',
+  href,
+  onClick,
+  ...rest
 }) => {
   const Component = as;
   
@@ -44,6 +49,9 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
         className
       )}
       style={{ animationDelay: `${delay}ms`, animationFillMode: 'forwards' }}
+      href={href}
+      onClick={onClick}
+      {...rest}
     >
       {children}
     </Component>
