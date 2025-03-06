@@ -34,7 +34,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick, de
       <div 
         className={cn(
           "transition-all duration-300 ease-in-out overflow-hidden text-gray-300",
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
         )}
       >
         <p className="pb-4">{answer}</p>

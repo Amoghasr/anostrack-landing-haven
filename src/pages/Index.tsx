@@ -11,6 +11,7 @@ import About from '@/components/About';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import HowItWorks from '@/components/HowItWorks';
 
 const Index = () => {
   console.log('Index component is rendering');
@@ -70,6 +71,7 @@ const Index = () => {
         <Services />
         <Process />
         <Benefits />
+        <HowItWorks />
         <Technology />
         <EarlyAccess />
         <About />

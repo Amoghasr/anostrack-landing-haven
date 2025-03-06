@@ -59,6 +59,7 @@ const AccessForm: React.FC<AccessFormProps> = ({ className }) => {
           }}
           required
           className="border-gray-700 bg-anostrack-800 text-white focus:ring-anostrack-400 focus:border-anostrack-400 placeholder-gray-500"
+          style={{ color: 'white' }}
         />
         {error && (
           <p className="text-red-400 text-sm mt-1 animate-fade-in-fast">{error}</p>
