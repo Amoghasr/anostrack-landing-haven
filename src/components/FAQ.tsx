@@ -16,7 +16,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick, de
   return (
     <div 
       className={cn(
-        "animate-on-scroll border-b border-gray-200 last:border-0 overflow-hidden",
+        "animate-on-scroll border-b border-anostrack-700 last:border-0 overflow-hidden",
         isOpen ? "pb-4" : ""
       )}
       style={{ transitionDelay: `${delay}ms` }}
@@ -24,15 +24,16 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick, de
       <button 
         className="w-full py-4 flex justify-between items-center text-left focus:outline-none"
         onClick={onClick}
+        aria-expanded={isOpen}
       >
-        <span className="text-lg font-medium">{question}</span>
-        <span className="ml-4 flex-shrink-0 text-gray-500">
+        <span className="text-lg font-medium text-white">{question}</span>
+        <span className="ml-4 flex-shrink-0 text-anostrack-400">
           {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
         </span>
       </button>
       <div 
         className={cn(
-          "transition-all duration-300 ease-in-out overflow-hidden text-gray-600",
+          "transition-all duration-300 ease-in-out overflow-hidden text-gray-300",
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         )}
       >
@@ -43,7 +44,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick, de
 };
 
 const FAQ: React.FC = () => {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndices, setOpenIndices] = useState<number[]>([0]);
   
   const faqs = [
     {
@@ -73,27 +74,33 @@ const FAQ: React.FC = () => {
   ];
 
   const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? -1 : index);
+    setOpenIndices(prev => {
+      if (prev.includes(index)) {
+        return prev.filter(i => i !== index);
+      } else {
+        return [...prev, index];
+      }
+    });
   };
 
   return (
-    <Section id="faq" className="bg-white">
+    <Section id="faq" className="bg-anostrack-900">
       <div className="text-center mb-12">
-        <span className="text-anostrack-600 font-medium text-sm uppercase tracking-wider animate-on-scroll">FAQ</span>
-        <h2 className="section-heading animate-on-scroll mt-2">Frequently Asked Questions</h2>
-        <p className="section-subheading animate-on-scroll">
+        <span className="text-anostrack-300 font-medium text-sm uppercase tracking-wider animate-on-scroll">FAQ</span>
+        <h2 className="section-heading animate-on-scroll mt-2 text-white">Frequently Asked Questions</h2>
+        <p className="section-subheading animate-on-scroll text-gray-300">
           Find answers to common questions about our data annotation and synthetic data services
         </p>
       </div>
       
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div className="bg-anostrack-800 rounded-xl shadow-lg border border-anostrack-700 overflow-hidden">
           {faqs.map((faq, index) => (
             <FAQItem
               key={index}
               question={faq.question}
               answer={faq.answer}
-              isOpen={openIndex === index}
+              isOpen={openIndices.includes(index)}
               onClick={() => toggleFAQ(index)}
               delay={index * 100}
             />
@@ -101,12 +108,12 @@ const FAQ: React.FC = () => {
         </div>
         
         <div className="text-center mt-10 animate-on-scroll">
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-300 mb-6">
             Still have questions? Contact our team for personalized assistance.
           </p>
           <a 
             href="#contact" 
-            className="inline-flex items-center justify-center bg-anostrack-100 hover:bg-anostrack-200 text-anostrack-700 px-6 py-3 rounded-md font-medium transition-all duration-300"
+            className="inline-flex items-center justify-center bg-anostrack-700 hover:bg-anostrack-600 text-anostrack-200 px-6 py-3 rounded-md font-medium transition-all duration-300 transform hover:scale-105"
           >
             Contact Us
           </a>

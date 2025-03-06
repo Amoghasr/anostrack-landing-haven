@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import Section from './Section';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, MapPin, Send } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -49,25 +49,19 @@ const Contact: React.FC = () => {
       delay: 0
     },
     {
-      icon: <Phone size={20} />,
-      title: "Phone",
-      content: "+1 (555) 123-4567",
-      delay: 100
-    },
-    {
       icon: <MapPin size={20} />,
       title: "Location",
-      content: "San Francisco, CA, USA",
-      delay: 200
+      content: "Bangalore, India",
+      delay: 100
     }
   ];
 
   return (
-    <Section id="contact" className="bg-gray-50">
+    <Section id="contact" className="bg-anostrack-900 text-white">
       <div className="text-center mb-12">
-        <span className="text-anostrack-600 font-medium text-sm uppercase tracking-wider animate-on-scroll">Get In Touch</span>
-        <h2 className="section-heading animate-on-scroll mt-2">Contact Us</h2>
-        <p className="section-subheading animate-on-scroll">
+        <span className="text-anostrack-300 font-medium text-sm uppercase tracking-wider animate-on-scroll">Get In Touch</span>
+        <h2 className="section-heading animate-on-scroll mt-2 text-white">Contact Us</h2>
+        <p className="section-subheading animate-on-scroll text-gray-300">
           Reach out to learn more about how Anostrack AI can support your AI development
         </p>
       </div>
@@ -78,28 +72,28 @@ const Contact: React.FC = () => {
             <div 
               key={index} 
               className={cn(
-                "animate-on-scroll flex gap-4 p-4 bg-white rounded-lg",
-                "shadow-sm border border-gray-100"
+                "animate-on-scroll flex gap-4 p-4 bg-anostrack-800 rounded-lg",
+                "shadow-sm border border-anostrack-700 hover:border-anostrack-600 transition-all duration-300"
               )}
               style={{ transitionDelay: `${item.delay}ms` }}
             >
-              <div className="w-10 h-10 rounded-full bg-anostrack-100 flex items-center justify-center text-anostrack-600">
+              <div className="w-10 h-10 rounded-full bg-anostrack-700 flex items-center justify-center text-anostrack-300">
                 {item.icon}
               </div>
               <div>
-                <h3 className="font-medium mb-1">{item.title}</h3>
-                <p className="text-gray-600">{item.content}</p>
+                <h3 className="font-medium mb-1 text-white">{item.title}</h3>
+                <p className="text-gray-300">{item.content}</p>
               </div>
             </div>
           ))}
         </div>
         
-        <div className="animate-on-scroll md:col-span-2 bg-white rounded-lg shadow-sm border border-gray-100 p-6">
-          <h3 className="text-xl font-medium mb-4">Send Us a Message</h3>
+        <div className="animate-on-scroll md:col-span-2 bg-anostrack-800 rounded-lg shadow-sm border border-anostrack-700 p-6">
+          <h3 className="text-xl font-medium mb-4 text-white">Send Us a Message</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
                   Name
                 </label>
                 <Input
@@ -108,12 +102,12 @@ const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full"
+                  className="w-full bg-anostrack-700 border-anostrack-600 text-white placeholder-gray-500"
                   placeholder="Your name"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
                   Email
                 </label>
                 <Input
@@ -123,14 +117,14 @@ const Contact: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full"
+                  className="w-full bg-anostrack-700 border-anostrack-600 text-white placeholder-gray-500"
                   placeholder="your@email.com"
                 />
               </div>
             </div>
             
             <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-1">
                 Subject
               </label>
               <Input
@@ -139,13 +133,13 @@ const Contact: React.FC = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full"
+                className="w-full bg-anostrack-700 border-anostrack-600 text-white placeholder-gray-500"
                 placeholder="How can we help you?"
               />
             </div>
             
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
                 Message
               </label>
               <Textarea
@@ -154,14 +148,14 @@ const Contact: React.FC = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full min-h-[150px]"
+                className="w-full min-h-[150px] bg-anostrack-700 border-anostrack-600 text-white placeholder-gray-500"
                 placeholder="Your message here..."
               />
             </div>
             
             <Button 
               type="submit" 
-              className="bg-anostrack-500 hover:bg-anostrack-600 text-white"
+              className="bg-anostrack-500 hover:bg-anostrack-400 text-white transition-all duration-300 transform hover:scale-105"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Sending...' : 'Send Message'} 

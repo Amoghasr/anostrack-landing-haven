@@ -38,15 +38,32 @@ const Index = () => {
       });
     });
     
+    // Initialize animation observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+    
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', () => {});
+      });
+      
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.unobserve(el);
       });
     };
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-anostrack-950">
       <Header />
       <main className="flex-grow">
         <Hero />
