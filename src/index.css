@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 221 83% 53%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -35,19 +38,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,6 +92,91 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white bg-opacity-70 backdrop-blur-md border border-white border-opacity-20 shadow-glass;
+  }
+  
+  .glass-panel-dark {
+    @apply bg-black bg-opacity-40 backdrop-blur-md border border-gray-600 border-opacity-20 shadow-glass;
+  }
+  
+  .section-heading {
+    @apply text-3xl md:text-4xl font-semibold mb-2;
+  }
+  
+  .section-subheading {
+    @apply text-lg text-gray-600 max-w-3xl mx-auto mb-10;
+  }
+  
+  .subtle-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-anostrack-500 
+           after:transition-all after:duration-300 hover:after:w-full inline-block;
+  }
+
+  .nav-item {
+    @apply px-4 py-2 text-gray-700 hover:text-anostrack-600 transition-colors duration-300 subtle-underline;
+  }
+  
+  .active-nav-item {
+    @apply text-anostrack-600 after:w-full;
+  }
+  
+  .stagger-animate > * {
+    @apply opacity-0;
+    animation: fade-in 0.5s ease-out forwards;
+  }
+  
+  .stagger-animate > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-animate > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-animate > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-animate > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-animate > *:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-animate > *:nth-child(6) { animation-delay: 0.6s; }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.clip-path-slant {
+  clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
 }
