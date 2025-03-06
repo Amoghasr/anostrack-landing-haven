@@ -13,7 +13,11 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+  console.log('Index component is rendering');
+  
   useEffect(() => {
+    console.log('Index component mounted');
+    
     // Update document title
     document.title = 'Anostrack AI - Data Annotation & Synthetic Data';
     

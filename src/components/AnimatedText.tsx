@@ -41,6 +41,9 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     }
   };
 
+  // Add console logging to debug
+  console.log(`Rendering AnimatedText with animation: ${animation}`);
+
   return (
     <Component
       className={cn(
